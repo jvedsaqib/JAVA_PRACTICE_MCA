@@ -27,17 +27,17 @@ public class Prog_6 {
 
 	public static void main(String[] args) {
 		try{
-			if(args.length < 1){
-				throw new ArrayIndexOutOfBoundsException("No argument provided");
-			}else if(args.length == 1 && new Integer(args[0]) != 0){
-				double n =new Integer(args[0]);
-				System.out.println("Factorial of " + n + " - " + fact((int)n));
-			}
-			else if(args.length > 0 && new Integer(args[0]) == 0){
-				throw new IllegalArgumentException("Value is zero");
-			}
-		}catch(Exception e){
-			System.out.println(e.getMessage());
+			if(Integer.parseInt(args[0]) == 0)
+				throw new IllegalArgumentException();
+			fact(Integer.parseInt(args[0]));
+		}catch(ArrayIndexOutOfBoundsException e){
+			System.out.println("No Argument");
+		}
+		catch(NumberFormatException e){
+			System.out.println("Non-integer provided");
+		}
+		catch(IllegalArgumentException e){
+			System.out.println("Zero provided");
 		}
 	}
 
