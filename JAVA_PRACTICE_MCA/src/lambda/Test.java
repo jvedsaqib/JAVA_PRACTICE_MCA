@@ -11,7 +11,7 @@ package lambda;
 public class Test {
 	
 	interface Odd{
-		boolean isOdd(int num);
+		boolean isOdd(int num);		// functional Interface
 	}
 	
 	interface Prime{
