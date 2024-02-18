@@ -1,30 +1,31 @@
 /*
  * 1. Create a Class Search within that implement two Generic method LinearSearch(),
 		BinarySearch(). Test your program for different data.
+		DONE
  */
 
 package array_dsa;
 
 public class prog_1 {
 
-	static boolean linSearch(int[] a, int key) {
+	static <E> boolean linSearch(E[] a, E key) {
 
-		for (int i : a)
+		for (E i : a)
 			if (i == key)
 				return true;
 
 		return false;
 	}
 
-	static boolean binSearch(int arr[], int key) {
+	static boolean binSearch(Comparable arr[], Comparable key) {
 
-		int first = 0; 
-		int last = arr.length;
-		int mid = (first + last) / 2;
+		Integer first = 0;
+		Integer last = arr.length;
+		Integer mid = (first + last) / 2;
 		while (first <= last) {
-			if (arr[mid] < key) {
+			if (arr[mid].compareTo(key) == 1) {
 				first = mid + 1;
-			} else if (arr[mid] == key) {
+			} else if (arr[mid].compareTo(key) == 0) {
 				System.out.println("Element is found at index: " + mid);
 				return true;
 			} else {
@@ -32,6 +33,7 @@ public class prog_1 {
 			}
 			mid = (first + last) / 2;
 		}
+
 		if (first > last) {
 			System.out.println("Element is not found!");
 			return false;
@@ -39,11 +41,16 @@ public class prog_1 {
 		return false;
 	}
 
+	// --------------------------------- MAIN
+	// ---------------@Saqib---------------------
+
 	public static void main(String[] args) {
 
-		int a[] = { 1, 2, 3, 4, 5, 6 };
+		Integer a[] = { 1, 2, 3, 4, 5, 6 };
+		String b[] = { "Apple", "Banana", "Mango", "Orange" };
 
 		System.out.println(linSearch(a, 4));
+		System.out.println(linSearch(b, "Mango"));
 		System.out.println(binSearch(a, 4));
 	}
 
