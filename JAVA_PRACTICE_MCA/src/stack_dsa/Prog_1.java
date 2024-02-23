@@ -33,9 +33,9 @@ class StackUnderflowException extends Exception {
 	}
 }
 
-class StackCls {
+class StackCls <T>{
 
-	private int[] data;
+	private T[] data;
 	private int size;
 	private int TOS = -1;
 	private String name = null;
@@ -53,17 +53,17 @@ class StackCls {
 	}
 
 	public StackCls(int size) {
-		this.data = new int[size];
+		this.data = (T[])new Object[size];
 		this.size = size;
 	}
 	
 	public StackCls(int size, String name) {
-		this.data = new int[size];
+		this.data = (T[])new Object[size];
 		this.size = size;
 		this.name = name;
 	}
 
-	public void push(int elem) throws StackOverflowException {
+	public void push(T elem) throws StackOverflowException {
 
 		if (this.TOS == this.data.length - 1)
 			throw new StackOverflowException();
@@ -76,18 +76,18 @@ class StackCls {
 
 	}
 
-	public int pop() throws StackUnderflowException {
+	public T pop() throws StackUnderflowException {
 
 		if (this.TOS < 0)
 			throw new StackUnderflowException();
 
-		int elem = this.data[TOS - 1];
+		T elem = this.data[TOS - 1];
 		TOS--;
 		return elem;
 
 	}
 
-	public int peek() throws StackUnderflowException {
+	public T peek() throws StackUnderflowException {
 
 		if (this.TOS < 0)
 			throw new StackUnderflowException();
@@ -109,6 +109,24 @@ class StackCls {
 		return true;
 
 	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public int getTOS() {
+		return TOS;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 
 }
 
