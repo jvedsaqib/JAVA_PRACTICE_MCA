@@ -1,4 +1,6 @@
 /*
+ * // ---------@HITK_MCA_2382031_SaqibJaved-----------
+ * 
  * 3. Write a method in a separate class to evaluate a postfix expression 
  * (Consider more than single digit number as a input).
  */
@@ -13,67 +15,105 @@ public class Prog_3 {
 
 		String res = "";
 
-		for (char c : s.toCharArray())
-			if (c != '+' && c != '-' && c != '*' && c != '/' && c != '^' && c != '%' && c != '(' && c != ')')
-				res += c;
-			else
-				res += " " + c + " ";
+		for (int i = 0; i < s.length(); i++) {
+
+		}
 
 		return res;
 	}
 
-	static void evaluatePostfix(String s)
-			throws StackOverflowException, StackUnderflowException {
-		s = spacer(s);
+	static void evaluatePostfix(String s) throws StackOverflowException, StackUnderflowException {
+		System.out.println("String = " + s);
+		StackCls operandStack = new StackCls(s.length(), "Operand Stack");
+
 		StringTokenizer st = new StringTokenizer(s);
-		StackCls ob = new StackCls(s.length(), "Stack");
-		
-		System.out.println(s);
-		
+
 		while (st.hasMoreTokens()) {
-//			System.out.println(st.nextToken());
+			String item = st.nextToken();
 
-			String temp = st.nextToken();
-			System.out.println("Token = " + temp);
-
-			if (!temp.equals("+") && !temp.equals("-") && !temp.equals("*") && !temp.equals("/")) {
-
-				ob.push(temp);
-				System.out.println(ob);
-				
+			if (!item.equals("+") && !item.equals("-") && !item.equals("*") && !item.equals("/") && !item.equals("^")
+					&& !item.equals("%")) {
+				System.out.println("Pushed -> " + item);
+				operandStack.push(item);
 			} else {
-				String a = ob.pop().toString();
-				String b = st.nextToken();
+				Integer op1 = Integer.valueOf(operandStack.pop().toString());
+				Integer op2 = Integer.valueOf(operandStack.pop().toString());
 
-				if(a.matches("-?\\d+") && b.matches("-?\\d+"))
-					if(temp.equals("+"))
-						ob.push(Integer.valueOf(a) + Integer.valueOf(b));
-					else if(temp.equals("-"))
-						ob.push(Integer.valueOf(a) - Integer.valueOf(b));
-					else if(temp.equals("*"))
-						ob.push(Integer.valueOf(a) * Integer.valueOf(b));
-					else if(temp.equals("/"))
-						ob.push(Integer.valueOf(a) / Integer.valueOf(b));
-					else if(temp.equals("^"))
-						ob.push(Math.pow(Integer.valueOf(a),Integer.valueOf(b)));
-					else if(temp.equals("%"))
-						ob.push(Integer.valueOf(a) % Integer.valueOf(a));
-				else	
-					ob.push(a + b + temp);
-				
-				System.out.println(ob);
+				if (item.equals("+")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(op1 + op2);
+					System.out.println("Pushed -> " + op1 + " + " + op2);
+					System.out.println(operandStack);
+				} else if (item.equals("-")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(op1 - op2);
+					System.out.println("Pushed -> " + op1 + " - " + op2);
+					System.out.println(operandStack);
+				} else if (item.equals("*")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(op1 * op2);
+					System.out.println("Pushed -> " + op1 + " * " + op2);
+					System.out.println(operandStack);
+				} else if (item.equals("/")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(op1 / op2);
+					System.out.println("Pushed -> " + op1 + " / " + op2);
+					System.out.println(operandStack);
+				} else if (item.equals("^")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(Math.pow(op1, op2));
+					System.out.println("Pushed -> " + op1 + "^" + op2);
+					System.out.println(operandStack);
+				} else if (item.equals("%")) {
+					System.err.println("Popped -> " + op1);
+					System.err.println("Popped -> " + op2);
+					operandStack.push(op1 % op2);
+					System.out.println("Pushed -> " + op1 + " % " + op2);
+					System.out.println(operandStack);
+				}
+
 			}
+
 		}
+
+		System.out.println("\n\n---------------OUTPUT----------------");
+		System.out.println(operandStack);
+
 	}
 
-	public static void main(String[] args)
-			throws StackOverflowException, StackUnderflowException {
-		// A + B --> A B +
-		String s = "1+2-5";
-		String s1 = "A+B*C";
+	// ------------------MAIN--------------------------
+	// ---------@HITK_MCA_2382031_SaqibJaved-----------
 
-		evaluatePostfix(s1);
+	public static void main(String[] args) throws StackOverflowException, StackUnderflowException {
+		String s = "3 10 5 + *";
+
+		evaluatePostfix(s);
 
 	}
 
 }
+
+/*
+//------------------OUTPUT--------------------------
+		String = 3 10 5 + *
+		Pushed -> 3
+		Pushed -> 10
+		Pushed -> 5
+		Popped -> 5
+		Popped -> 10
+		Pushed -> 5 + 10
+		Operand Stack => 3 15 
+		Popped -> 15
+		Popped -> 3
+		Pushed -> 15 * 3
+		Operand Stack => 45 
+		
+		
+		---------------OUTPUT----------------
+		Operand Stack => 45 
+*/ 

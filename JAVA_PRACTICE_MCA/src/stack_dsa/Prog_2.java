@@ -1,4 +1,6 @@
 /*
+ * // ---------@HITK_MCA_2382031_SaqibJaved-----------
+ * 
  * 2. Write a method in a separate class to check an expression is valid or not.
  */
 
@@ -33,8 +35,34 @@ public class Prog_2 {
 		
 	}
 
+	// ------------------MAIN--------------------------
+	// ---------@HITK_MCA_2382031_SaqibJaved-----------
+	
 	public static void main(String[] args) throws StackOverflowException, StackUnderflowException {
-		System.out.println(checkExpression("[a+b+(c+d)"));
+		// TRUE CASE :-
+//		String expression = "[a+b+(c+d)]";
+//		System.out.println(expression);
+//		System.out.println(checkExpression(expression));
+		
+		
+		// FALSE CASE :-
+		String expression = "[a+b+(c+d)";
+		System.out.println(expression);
+		System.out.println(checkExpression(expression));
 	}
 
 }
+
+/*
+// ------------------OUTPUT--------------------------
+  	TRUE CASE :-
+	   	[a+b+(c+d)]
+		Expression Stack => [ ( 
+		Expression Stack => 
+		true
+	FALSE CASE :-
+		[a+b+(c+d)
+		Expression Stack => [ ( 
+		Expression Stack => [ 
+		false
+*/ 

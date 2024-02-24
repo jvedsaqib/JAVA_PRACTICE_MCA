@@ -1,4 +1,6 @@
 /*
+ * // ---------@HITK_MCA_2382031_SaqibJaved-----------
+ * 
  * 1. Write a program to implement a Stack class (use a Array to store the elements of the stack).
 		[Implement Stack Overflow and Underflow by user defined Exception]. 
 		Write a method to check two stack are carrying similar elements or not.
@@ -33,7 +35,7 @@ class StackUnderflowException extends Exception {
 	}
 }
 
-class StackCls <T>{
+class StackCls<T> {
 
 	private T[] data;
 	private int size;
@@ -41,11 +43,11 @@ class StackCls <T>{
 	private String name = null;
 
 	public String toString() {
-		if(this.name == null)
-			System.out.print("Stack -- ");
+		if (this.name == null)
+			System.out.print("Stack => ");
 		else
-			System.out.print(this.name + " -- ");
-			
+			System.out.print(this.name + " => ");
+
 		for (int i = 0; i < this.TOS; i++) {
 			System.out.print(this.data[i] + " ");
 		}
@@ -53,12 +55,12 @@ class StackCls <T>{
 	}
 
 	public StackCls(int size) {
-		this.data = (T[])new Object[size];
+		this.data = (T[]) new Object[size];
 		this.size = size;
 	}
-	
+
 	public StackCls(int size, String name) {
-		this.data = (T[])new Object[size];
+		this.data = (T[]) new Object[size];
 		this.size = size;
 		this.name = name;
 	}
@@ -125,31 +127,51 @@ class StackCls <T>{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
+	public boolean isEmpty() {
+		if (this.TOS < 0)
+			return true;
+		else
+			return false;
+	}
 
 }
 
 public class Prog_1 {
 
+	// ------------------MAIN--------------------------
+	// ---------@HITK_MCA_2382031_SaqibJaved-----------
+
 	public static void main(String[] args) throws StackOverflowException, StackUnderflowException {
 
 		StackCls obA = new StackCls(5, "StackA");
 		StackCls obB = new StackCls(5, "StackB");
-		
+
 		obA.push(1);
 		obA.push(2);
 		obA.push(3);
 
 		obB.push(1);
-		obB.push(2);
+//		obB.push(2);
 		obB.push(3);
-		
+
 		System.out.println(obA);
 		System.out.println(obB);
 
 		System.out.println(obA.equals(obB));
-		
+
 	}
 
 }
+
+/*
+  // ------------------OUTPUT--------------------------
+    TRUE CASE :-
+	   	StackA => 1 2 3 
+		StackB => 1 2 3 
+		true
+	FALSE CASE :-
+		StackA => 1 2 3 
+		StackB => 1 3 
+		false
+*/ 
