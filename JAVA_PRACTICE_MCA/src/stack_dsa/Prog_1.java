@@ -129,7 +129,7 @@ class StackCls<T> {
 	}
 
 	public boolean isEmpty() {
-		if (this.TOS < 0)
+		if (this.TOS <= 0)
 			return true;
 		else
 			return false;

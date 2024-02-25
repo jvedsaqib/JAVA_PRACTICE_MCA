@@ -36,8 +36,8 @@ public class Prog_3 {
 				System.out.println("Pushed -> " + item);
 				operandStack.push(item);
 			} else {
-				Integer op1 = Integer.valueOf(operandStack.pop().toString());
 				Integer op2 = Integer.valueOf(operandStack.pop().toString());
+				Integer op1 = Integer.valueOf(operandStack.pop().toString());
 
 				if (item.equals("+")) {
 					System.err.println("Popped -> " + op1);
