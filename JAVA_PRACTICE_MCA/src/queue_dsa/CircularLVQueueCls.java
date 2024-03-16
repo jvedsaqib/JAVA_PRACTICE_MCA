@@ -1,6 +1,6 @@
 package queue_dsa;
 
-public class QueueCls<T> {
+public class CircularLVQueueCls<T> {
 
 	private T[] data;
 	private int SIZE;
@@ -12,24 +12,29 @@ public class QueueCls<T> {
 
 		System.out.print(this.name + " => ");
 
-		for (int i = this.front; i <= this.rear; i++) {
-			if (this.data[i] != null)
+		int i;
+		if (isEmpty()) {
+			System.out.println("Empty Queue");
+		} else {
+			System.out.println("Elements -> ");
+			for (i = this.front+1; i != this.rear; i = (i + 1) % this.SIZE)
 				System.out.print(this.data[i] + " ");
+			System.out.println(this.data[i]);
 		}
 		return "";
 	}
 
-	QueueCls(int SIZE) {
+	CircularLVQueueCls(int SIZE) {
 		this.data = (T[]) new Object[SIZE];
 		this.SIZE = SIZE;
-		this.front = this.rear = -1;
+		this.front = this.rear = 0;
 		this.name = "Queue";
 	}
 
-	QueueCls(int SIZE, String name) {
+	CircularLVQueueCls(int SIZE, String name) {
 		this.data = (T[]) new Object[SIZE];
 		this.SIZE = SIZE;
-		this.front = this.rear = -1;
+		this.front = this.rear = 0;
 		this.name = name;
 	}
 
@@ -42,23 +47,20 @@ public class QueueCls<T> {
 	}
 
 	public void insert(T elem) throws QueueOverflowException {
-		if (this.isFull())
+		int new_rear = (this.rear + 1) % this.SIZE;
+
+		if (this.isFull() || this.front == new_rear)
 			throw new QueueOverflowException();
-		if (this.rear == -1)
-			this.front = this.rear = 0;
-
-		this.data[rear++] = elem;
-
+		
+		this.rear = new_rear;
+		this.data[rear] = elem;
 	}
 
 	public T serve() throws QueueUnderflowException {
 		if (this.isEmpty())
 			throw new QueueUnderflowException();
-		if (this.front == -1)
-			this.front = 0;
-
-		return this.data[front++];
-
+		this.front = (this.front + 1) % this.SIZE;
+		return this.data[this.front];
 	}
 	
 	public T get(int index) {
@@ -76,5 +78,5 @@ public class QueueCls<T> {
 	public int getRear() {
 		return this.rear;
 	}
-
+	
 }
