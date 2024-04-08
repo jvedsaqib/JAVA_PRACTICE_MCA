@@ -27,7 +27,7 @@ public class Prog_3 {
 		Collections.sort(a);
 		try {
 			System.out.print("Sorting");
-			for (int i = 0; i < new Random().nextInt(5, 10); i++) {
+			for (int i = 0; i < new Random().nextInt(5); i++) {
 				Thread.sleep(700);
 				System.out.print(".");
 			}

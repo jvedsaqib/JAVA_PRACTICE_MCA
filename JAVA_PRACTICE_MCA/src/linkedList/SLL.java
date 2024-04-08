@@ -2,8 +2,11 @@ package linkedList;
 import java.util.*;
 
 public class SLL {
+	
+	private int count = 0;
 
     private ListNode head;
+    
 
     private static class ListNode {
         private int data;
@@ -13,6 +16,10 @@ public class SLL {
             this.data = data;
             this.next = null;
         }
+    }
+    
+    public int getCount(){
+    	return this.count;
     }
 
     public void display() {
@@ -66,6 +73,7 @@ public class SLL {
         newNode.next = head;
         head = newNode;
         System.out.println("Data inserted at front!");
+        this.count++;
     }
 
     public void addNodeAtLast(int data) {
@@ -73,6 +81,7 @@ public class SLL {
         if (head == null) {
             head = newNode;
             System.out.println("Data inserted at last!");
+            this.count++;
             return;
         }
 
@@ -82,6 +91,7 @@ public class SLL {
         }
         temp.next = newNode;
         System.out.println("Data inserted at last!");
+        this.count++;
     }
 
     public void deleteNodeAtFront() {
@@ -89,6 +99,7 @@ public class SLL {
             throw new IllegalStateException("List is empty");
         }
         head = head.next;
+        this.count--;
     }
 
     public void deleteNodeAtLast() {
@@ -97,6 +108,7 @@ public class SLL {
         }
         if (head.next == null) {
             head = null;
+            this.count--;
             return;
         }
 
@@ -108,6 +120,7 @@ public class SLL {
             temp = temp.next;
         }
         prev.next = null;
+        this.count--;
     }
 
     public void addNodeAtSpecificPosition(int data, int pos) {
@@ -131,6 +144,7 @@ public class SLL {
         newNode.next = temp.next;
         temp.next = newNode;
         System.out.println("Data inserted at position " + pos);
+        this.count++;
     }
 
     public void deleteNodeAtSpecificPosition(int pos) {
@@ -151,6 +165,7 @@ public class SLL {
             temp = temp.next;
         }
         temp.next = temp.next.next;
+        this.count--;
     }
 
     public boolean searchNode(int key) {
@@ -190,6 +205,7 @@ public class SLL {
             temp = temp.next;
         }
         temp.next = list2.head;
+        this.count += list2.getCount();
     }
 
 
@@ -211,7 +227,7 @@ public class SLL {
         boolean flag = true;
 
         while (flag) {
-            System.out.println("0) Exit \n1) Display \n2) Insert \n3) Delete \n4) Search \n5) Reverse List \n6) Concat");
+            System.out.println("0) Exit \n1) Display \n2) Insert \n3) Delete \n4) Search \n5) Reverse List \n6) Concat \n7) getCount");
             System.out.println("Choose - ");
             choice = sc.nextInt();
 
@@ -299,6 +315,8 @@ public class SLL {
                 	sll.concatenate(sll2);
                 	sll.display();
                 	break;
+                case 7:
+                	System.out.println("Node Count is - " + sll.getCount());
 
             }
 
