@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class driver {
 
@@ -67,33 +68,71 @@ public class driver {
 
 //		--------------------------- PRIMS END ---------------------
 
-		int V = 4;  // Number of vertices in graph
-		int E = 5;  // Number of edges in graph
-		Kruskal
-		graph = new Kruskal
-		(V, E);
+		// int V = 4;  // Number of vertices in graph
+		// int E = 5;  // Number of edges in graph
+		// Kruskal
+		// graph = new Kruskal
+		// (V, E);
 
-		graph.edges[0].src = 0;
-		graph.edges[0].dest = 1;
-		graph.edges[0].weight = 10;
+		// graph.edges[0].src = 0;
+		// graph.edges[0].dest = 1;
+		// graph.edges[0].weight = 10;
 
-		graph.edges[1].src = 0;
-		graph.edges[1].dest = 2;
-		graph.edges[1].weight = 6;
+		// graph.edges[1].src = 0;
+		// graph.edges[1].dest = 2;
+		// graph.edges[1].weight = 6;
 
-		graph.edges[2].src = 0;
-		graph.edges[2].dest = 3;
-		graph.edges[2].weight = 5;
+		// graph.edges[2].src = 0;
+		// graph.edges[2].dest = 3;
+		// graph.edges[2].weight = 5;
 
-		graph.edges[3].src = 1;
-		graph.edges[3].dest = 3;
-		graph.edges[3].weight = 15;
+		// graph.edges[3].src = 1;
+		// graph.edges[3].dest = 3;
+		// graph.edges[3].weight = 15;
 
-		graph.edges[4].src = 2;
-		graph.edges[4].dest = 3;
-		graph.edges[4].weight = 4;
+		// graph.edges[4].src = 2;
+		// graph.edges[4].dest = 3;
+		// graph.edges[4].weight = 4;
 
-		graph.kruskalMST();
+		// graph.kruskalMST();
+
+//		--------------------------- KRUSKAL END ---------------------
+
+		// int a[][] = {{0, 3, 999, 7},
+		// 			{8, 0, 2, 999},
+		// 			{5, 999, 0, 1},
+		// 			{2, 999, 999, 0}};
+
+		// FloydWarshall fw = new FloydWarshall(a);
+		// fw.calc();
+
+//		--------------------------- FLOYD WARSHALL END ---------------------
+
+		// int V = 5;
+		// int source = 0;
+
+		// List<List<Node> > adj
+		// 	= new ArrayList<List<Node> >();
+
+		// for (int i = 0; i < V; i++) {
+		// 	List<Node> item = new ArrayList<Node>();
+		// 	adj.add(item);
+		// }
+
+		// adj.get(0).add(new Node(1, 9));
+		// adj.get(0).add(new Node(2, 6));
+		// adj.get(0).add(new Node(3, 5));
+		// adj.get(0).add(new Node(4, 3));
+
+		// adj.get(2).add(new Node(1, 2));
+		// adj.get(2).add(new Node(3, 4));
+
+		// Dijkstra dpq = new Dijkstra(V);
+		// dpq.dijkstra(adj, source);
+		// dpq.display(source);
+
+//		--------------------------- DIJKSTRA END ---------------------
+
 
 	}
 
